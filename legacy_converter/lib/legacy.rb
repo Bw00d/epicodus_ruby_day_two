@@ -1,18 +1,12 @@
-def convert_row(key, val_ary)
+def convert_hash(hash) 
   result = Hash.new
 
-  val_ary.each do |val|
-    result[val] = key
+  hash.each do |key, val_ary|
+    row = Hash.new
+    val_ary.each do |val|
+      row[val] = key
+    end
+    result.merge!(row)
   end
   result
-end
-
-def convert_hash(hash) 
-  final_result = Hash.new
-
-  hash.each do |key, val|
-    result = convert_row(key, val)
-    final_result.merge!(result)
-  end
-  final_result
 end
